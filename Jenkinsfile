@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'vetrinia-sentiment'
-        CONTAINER_NAME = 'vetrinia-sentiment-app'
-       URL_PYTHON = 'C:\\Users\\vuotoe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
-    }
+       IMAGE_NAME = 'vetrinia-sentiment'
+       CONTAINER_NAME = 'vetrinia-sentiment-app'
+   }
 
     triggers {
         pollSCM('* * * * *')
@@ -21,13 +20,13 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                bat '"%URL_PYTHON%" -m pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Tests') {
             steps {
-                bat '"%URL_PYTHON%" -m pytest -v'
+                bat 'python -m pytest -v'
             }
         }
 
