@@ -1,0 +1,33 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Tempo medio risposta /predict",
+      "targets": [{"expr": "rate(sentiment_request_duration_seconds_sum[1m]) / rate(sentiment_request_duration_seconds_count[1m])"}],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+    },
+    {
+      "type": "timeseries",
+      "title": "Errori di predizione",
+      "targets": [{"expr": "rate(sentiment_prediction_errors_total[1m])"}],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+    },
+    {
+      "type": "timeseries",
+      "title": "CPU container applicazione",
+      "targets": [{"expr": "rate(container_cpu_usage_seconds_total{name=\"vetrinia-sentiment-app\"}[1m])"}],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+    },
+    {
+      "type": "timeseries",
+      "title": "Memoria container applicazione",
+      "targets": [{"expr": "container_memory_usage_bytes{name=\"vetrinia-sentiment-app\"}"}],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+    }
+  ],
+  "schemaVersion": 39,
+  "title": "Vetrinia Sentiment Analysis",
+  "version": 1
+}
