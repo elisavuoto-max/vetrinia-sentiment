@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'vetrinia-sentiment'
         CONTAINER_NAME = 'vetrinia-sentiment-app'
-        URL_PYTHON = 'C:\\Users\\vuotoe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe'
+       URL_PYTHON = 'C:\\Users\\vuotoe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
     }
 
     triggers {
