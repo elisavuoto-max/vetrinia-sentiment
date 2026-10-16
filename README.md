@@ -181,3 +181,4 @@ Il trigger pollSCM controlla periodicamente Git per nuove modifiche. In un repos
 ## Scelta progettuale
 
 La soluzione è un singolo servizio Flask in Docker, Prometheus per le metriche, Grafana per la dashboard e cAdvisor per CPU/memoria. 
+
