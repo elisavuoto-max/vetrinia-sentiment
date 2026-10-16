@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'vetrinia-sentiment'
         CONTAINER_NAME = 'vetrinia-sentiment-app'
+        URL_PYTHON = 'C:\\Users\\vuotoe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe'
     }
 
     triggers {
@@ -20,13 +21,13 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                bat 'py -m pip install -r requirements.txt'
+                bat '"%URL_PYTHON%" -m pip install -r requirements.txt'
             }
         }
 
         stage('Tests') {
             steps {
-                bat 'py -m pytest -v'
+                bat '"%URL_PYTHON%" -m pytest -v'
             }
         }
 
@@ -50,24 +51,10 @@ pipeline {
     post {
         success {
             echo 'Pipeline completata con successo.'
-
-            // Se in futuro installi Email Extension Plugin:
-            // emailext(
-            //     subject: 'SUCCESS - Vetrinia Sentiment',
-            //     body: 'Deploy completato con successo',
-            //     to: 'team@example.com'
-            // )
         }
 
         failure {
             echo 'Pipeline fallita.'
-
-            // Se in futuro installi Email Extension Plugin:
-            // emailext(
-            //     subject: 'FAILED - Vetrinia Sentiment',
-            //     body: 'Controllare la pipeline Jenkins',
-            //     to: 'team@example.com'
-            // )
         }
     }
 }
