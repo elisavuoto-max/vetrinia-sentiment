@@ -42,7 +42,7 @@ pipeline {
             steps {
                 bat '''
                 docker rm -f %CONTAINER_NAME% 2>nul || echo Container precedente non presente
-                docker run -d --name %CONTAINER_NAME% -p 5000:5000 %IMAGE_NAME%:latest
+                 docker compose up -d --build
                 '''
             }
         }
